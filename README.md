@@ -2,12 +2,12 @@
 List bash script for BarelangFC server setup
 Setup after fresh install Ubuntu 20.04
 
-## 1. Install NVIDIA CUDA
+## 1. Install NVIDIA CUDA and CUDNN
 CUDA Version 11.7
 Installation
 
 ```bash
-sh ./scripts/install-cuda.sh
+sh ./scripts/setup-cuda.sh
 ```
 
 Edit .bashrc script then add this export cuda path command to the end of line
@@ -65,4 +65,18 @@ Copyright (c) 2005-2022 NVIDIA Corporation
 Built on Tue_May__3_18:49:52_PDT_2022
 Cuda compilation tools, release 11.7, V11.7.64
 Build cuda_11.7.r11.7/compiler.31294372_0
+```
+
+## 2. Install OpenCV
+
+Build OpenCV 4.6.0 from source
+
+```bash
+sh scripts/setup-opencv.sh
+```
+
+Verify OpenCV installation with Python
+
+```python
+import cv2
 ```
