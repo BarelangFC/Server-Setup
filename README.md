@@ -80,3 +80,61 @@ Verify OpenCV installation with Python
 ```python
 import cv2
 ```
+
+## User administration
+
+### Install remove access with XRDP
+
+```bash
+sudo apt install -y xrdp
+```
+
+### Allow remote access over SSH
+
+Install OpenSSH-Server
+
+```bash
+sudo apt install openssh-server
+```
+
+Edit file `/etc/ssh/ssh_config` to give access on specific port.
+Uncomment this configuration
+
+```bash
+PasswordAuthentication yes
+Port 22 # Change to another port to give secure access
+```
+
+Restart OpenSSH-Server service
+
+```bash
+sudo systemctl restart ssh
+```
+
+### Adding new user with SSH and RDP access
+
+Creating new user to server
+
+```bash
+sudo useradd -m -s /bin/bash nama-user
+sudo passwd nama-user
+```
+
+Give access to SSH and RDP
+
+```bash
+sudo usermod -aG ssl-cert nama-user
+sudo systemctl restart xrdp
+```
+
+Give user root access
+
+```bash
+sudo usermod -aG sudo nama-user
+```
+
+Give user to access docker
+
+```bash
+sudo usermod -aG docker nama-user
+```
