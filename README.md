@@ -124,9 +124,13 @@ Give access to SSH and RDP
 
 ```bash
 sudo usermod -aG ssl-cert nama-user
+sudo adduser xrdp ssl-cert
 sudo systemctl restart xrdp
 ```
-
+Edit file `/etc/X11/Xwrapper.config`
+```bash
+allowed_users=anybody
+```
 Give user root access
 
 ```bash
